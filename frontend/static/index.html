@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="lib/chessboard-1.0.0.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-chess-king"></i> Chess Game</h1>
+            <p class="subtitle">Powered by ARIJIT</p>
+        </header>
+        
+        <div class="game-container">
+            <div class="board-section">
+                <div id="board" class="board"></div>
+                <div class="game-controls">
+                    <div class="color-selection">
+                        <label>Play as:</label>
+                        <div class="color-buttons">
+                            <button id="play-white-btn" class="btn btn-color white-btn active">
+                                <i class="fas fa-chess-king"></i> White
+                            </button>
+                            <button id="play-black-btn" class="btn btn-color black-btn">
+                                <i class="fas fa-chess-king"></i> Black
+                            </button>
+                        </div>
+                    </div>
+                    <div class="difficulty-selection">
+                        <label>AI Difficulty:</label>
+                        <div class="difficulty-buttons">
+                            <button id="easy-btn" class="btn btn-difficulty easy-btn">
+                                <i class="fas fa-smile"></i> Easy
+                            </button>
+                            <button id="medium-btn" class="btn btn-difficulty medium-btn active">
+                                <i class="fas fa-meh"></i> Medium
+                            </button>
+                            <button id="hard-btn" class="btn btn-difficulty hard-btn">
+                                <i class="fas fa-fire"></i> Hard
+                            </button>
+                        </div>
+                    </div>
+                    <div class="game-actions">
+                        <button id="new-game-btn" class="btn btn-primary">
+                            <i class="fas fa-refresh"></i> New Game
+                        </button>
+                        <button id="takeback-btn" class="btn btn-warning" disabled>
+                            <i class="fas fa-undo"></i> Take Back
+                        </button>
+                        <button id="flip-board-btn" class="btn btn-secondary">
+                            <i class="fas fa-rotate"></i> Flip Board
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="status-panel">
+                    <h3><i class="fas fa-info-circle"></i> Game Status</h3>
+                    <div class="status-item">
+                        <span class="label">You are playing:</span>
+                        <span id="player-color" class="value">White</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">AI Difficulty:</span>
+                        <span id="ai-difficulty" class="value">Medium</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Current Turn:</span>
+                        <span id="status" class="value">White to move</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Move Count:</span>
+                        <span id="move-count" class="value">0</span>
+                    </div>
+                </div>
+                
+                <div class="moves-panel">
+                    <h3><i class="fas fa-list"></i> Move History</h3>
+                    <div id="moves-history" class="moves-list">
+                        <p class="no-moves">No moves yet. White to start!</p>
+                    </div>
+                </div>
+                
+                <div class="position-panel">
+                    <h3><i class="fas fa-code"></i> Position (FEN)</h3>
+                    <div id="fen" class="fen-display">rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/chess.min.js"></script>
+    <script src="lib/chessboard-1.0.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

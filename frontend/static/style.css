@@ -1,0 +1,474 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header h1 i {
+    margin-right: 15px;
+    color: #ffd700;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Game Container */
+.game-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Board Section */
+.board-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+    background: white;
+}
+
+.game-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Panel Styles */
+.status-panel, .moves-panel, .position-panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.status-panel h3, .moves-panel h3, .position-panel h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-panel h3 i {
+    color: #4CAF50;
+}
+
+.moves-panel h3 i {
+    color: #2196F3;
+}
+
+.position-panel h3 i {
+    color: #FF9800;
+}
+
+/* Status Items */
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.status-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.label {
+    font-weight: 500;
+    color: #666;
+}
+
+.value {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Moves History */
+.moves-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fafafa;
+}
+
+.moves-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.moves-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.moves-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.moves-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.no-moves {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+.move-entry {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    margin-bottom: 4px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.move-entry:hover {
+    background-color: #e3f2fd;
+}
+
+.player-move {
+    background-color: #f8f9fa;
+    border-left: 3px solid #4CAF50;
+}
+
+.ai-move {
+    background-color: #fff3e0;
+    border-left: 3px solid #FF9800;
+}
+
+.player-icon {
+    font-size: 14px;
+    width: 20px;
+    text-align: center;
+}
+
+.player-move .player-icon {
+    color: #4CAF50;
+}
+
+.ai-move .player-icon {
+    color: #FF9800;
+}
+
+.move-text {
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+/* FEN Display */
+.fen-display {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    word-break: break-all;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.color-selection, .difficulty-selection {
+    text-align: center;
+}
+
+.color-selection label, .difficulty-selection label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: white;
+    font-size: 16px;
+}
+
+.color-buttons, .difficulty-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.game-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    user-select: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    color: white;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-color {
+    padding: 10px 20px;
+    font-size: 13px;
+    min-width: 100px;
+}
+
+.white-btn {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    color: #333;
+    border: 2px solid #ddd;
+}
+
+.white-btn.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.black-btn {
+    background: linear-gradient(135deg, #424242, #212121);
+    color: white;
+    border: 2px solid #666;
+}
+
+.black-btn.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.btn-difficulty {
+    padding: 8px 16px;
+    font-size: 12px;
+    min-width: 80px;
+}
+
+.easy-btn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    border: 2px solid #4CAF50;
+}
+
+.easy-btn.active {
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.medium-btn {
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    color: white;
+    border: 2px solid #FF9800;
+}
+
+.medium-btn.active {
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.hard-btn {
+    background: linear-gradient(135deg, #F44336, #D32F2F);
+    color: white;
+    border: 2px solid #F44336;
+}
+
+.hard-btn.active {
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.btn i {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .board {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .game-controls {
+        gap: 15px;
+    }
+    
+    .color-buttons, .difficulty-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .game-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .btn {
+        font-size: 12px;
+        padding: 10px 16px;
+    }
+}
+
+/* Move Highlighting - Universal selectors for all chessboard squares */
+.highlight-possible {
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 0, 0.9) !important;
+    background-color: rgba(255, 255, 0, 0.3) !important;
+}
+
+.highlight-move {
+    position: relative !important;
+}
+
+.highlight-move::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(0, 180, 0, 0.8);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 0 5px rgba(0, 180, 0, 0.5);
+}
+
+.highlight-capture {
+    position: relative !important;
+}
+
+.highlight-capture::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 5px solid rgba(220, 20, 20, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 0 8px rgba(220, 20, 20, 0.4);
+}
+
+/* Only target empty squares for highlighting - avoid disrupting pieces */
+#board .highlight-possible,
+#board .highlight-move, 
+#board .highlight-capture {
+    position: relative !important;
+}
